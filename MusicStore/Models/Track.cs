@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Runtime.Serialization;
 
 namespace MusicStore.Data.Models
 {
@@ -20,7 +21,7 @@ namespace MusicStore.Data.Models
         public int Milliseconds { get; set; }
         public int? Bytes { get; set; }
         public decimal UnitPrice { get; set; }
-
+        [IgnoreDataMember]
         public Album Album { get; set; }
         public Genre Genre { get; set; }
         public MediaType MediaType { get; set; }

@@ -104,3 +104,13 @@ MusicStore.Service/obj/project.assets.json
 MusicStore.Service/obj/Debug/netcoreapp2.1/MusicStore.Service.AssemblyInfo.cs
 MusicStore.Models/obj/project.assets.json
 MusicStore.Models/obj/Debug/netcoreapp2.1/MusicStore.Models.csproj.FileListAbsolute.txt
+MusicStore.Service/obj/MusicStore.Service.csproj.nuget.dgspec.json
+MusicStore.API/obj/MusicStore.API.csproj.nuget.dgspec.json
+.vs/MusicStore/v16/.suo
+.vs/MusicStore/config/applicationhost.config
+MusicStore.Models/obj/MusicStore.Models.csproj.nuget.dgspec.json
+.vs/MusicStore/v16/Server/sqlite3/storage.ide-shm
+.vs/MusicStore/v16/Server/sqlite3/storage.ide
+.vs/MusicStore/v16/Server/sqlite3/db.lock
+MusicStore/obj/MusicStore.Data.csproj.nuget.dgspec.json
+.vs/MusicStore/v16/Server/sqlite3/storage.ide-wal

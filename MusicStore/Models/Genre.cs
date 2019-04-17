@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Runtime.Serialization;
 
 namespace MusicStore.Data.Models
 {
@@ -12,7 +13,7 @@ namespace MusicStore.Data.Models
 
         public int GenreId { get; set; }
         public string Name { get; set; }
-
+        [IgnoreDataMember]
         public ICollection<Track> Track { get; set; }
     }
 }

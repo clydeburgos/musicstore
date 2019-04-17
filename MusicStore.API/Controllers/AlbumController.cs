@@ -12,23 +12,24 @@ using MusicStore.Service;
 
 namespace MusicStore.API.Controllers
 {
-    public class TrackController : Controller
+    public class AlbumController : Controller
     {
-        private readonly ITrackService trackService;
+        private readonly IAlbumService albumService;
         private readonly IMapper mapper;
-        public TrackController(ITrackService trackService, IMapper mapper) {
-            this.trackService = trackService;
+
+        public AlbumController(IAlbumService albumService, IMapper mapper) {
+            this.albumService = albumService;
             this.mapper = mapper;
         }
 
-        [Route("api/tracks")]
+        [Route("api/albums")]
         [EnableQuery(MaxTop = 50, PageSize = 10)]
         [HttpGet]
         public async Task<IActionResult> GetAll()
         {
-            var data = await this.trackService.GetAll();
-            return Ok(data);
+            var data = await this.albumService.GetAll();
+            var dataModel = this.mapper.Map<IEnumerable<Album>, IEnumerable<AlbumModel>>(data);
+            return Ok(dataModel);
         }
-
     }
 }
