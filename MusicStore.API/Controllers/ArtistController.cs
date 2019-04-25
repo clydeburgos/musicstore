@@ -22,15 +22,7 @@ namespace MusicStore.API.Controllers
             this.mapper = mapper;
         }
 
-        [Route("api/artist")]
-        [HttpGet]
-        public async Task<IActionResult> Search(string artist)
-        {
-            dynamic data = await this.artistService.Search(artist);
-            var firstItem = Newtonsoft.Json.JsonConvert.DeserializeObject(data.jsonResult)["value"][0];
-            return Ok(firstItem);
-        }
-        [EnableQuery]
+        [EnableQuery(MaxTop = 50, PageSize = 50)]
         [Route("api/artists")]
         [HttpGet]
         public async Task<IActionResult> GetAll()

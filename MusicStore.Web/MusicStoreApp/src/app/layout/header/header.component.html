@@ -1,0 +1,30 @@
+
+<nav  class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark shadow-sm">
+  <a class="navbar-brand mr-auto mr-lg-0" href="#">
+    <img class="mr-2" src="/assets/images/compact-disc.png" alt="" width="32" height="32"> MusicStore
+    
+  </a>
+  <button class="navbar-toggler p-0 border-0" type="button" data-toggle="offcanvas">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="navbar-collapse offcanvas-collapse pl-5" id="navbarsExampleDefault">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link">Artists <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link">Albums</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link">Playlists</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link">Random Tracks</a>
+      </li>
+    </ul>
+    <form class="form-inline my-2 my-lg-0">
+      <button class="btn btn-outline-dark my-2 my-sm-0" type="button" (click)="logout()">Logout</button>
+    </form>
+  </div>
+</nav>

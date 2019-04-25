@@ -22,7 +22,8 @@ namespace MusicStore.API.Controllers
         }
 
         [Route("api/tracks")]
-        [EnableQuery(MaxTop = 50, PageSize = 10)]
+        //[EnableQuery(PageSize = 10)]
+        [EnableQuery]
         [HttpGet]
         public async Task<IActionResult> GetAll()
         {

@@ -12,13 +12,12 @@ namespace MusicStore.Service.AzureServices
     {
         const string subscriptionKey = "b7af04ccf12d40979dc28f7168a54a64";
         const string uriBase = "https://centralus.api.cognitive.microsoft.com/bing/v7.0/images/search";
-        const string searchTerm = "ACDC";
 
         public BingImageSearchService() {
             //some DI here
         }
 
-        public async Task<SearchResultModel> Search(string keyword = "ACDC") {
+        public async Task<SearchResultModel> Search(string keyword) {
             var uriQuery = uriBase + "?q=" + Uri.EscapeDataString(keyword);
             WebRequest request = WebRequest.Create(uriQuery);
             request.Headers["Ocp-Apim-Subscription-Key"] = subscriptionKey;

@@ -40,7 +40,7 @@ namespace MusicStore.Service
         {
             return await this.dbContext.Artist
                 .Include(a => a.Album)
-                .Include("Album.Track")
+                //.Include("Album.Track")
                 .ToListAsync();
         }
 
