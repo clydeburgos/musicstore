@@ -1,3 +1,8 @@
+.card {
+    height: 175px;
+    box-shadow: 0 3px 4px 0px rgba(0, 0, 0, 0.15) !important;
+}
+
 .border-bottom {
     border-bottom: 5px solid #343a40!important;
 }
@@ -5,4 +10,9 @@
 .album-title {
     border-bottom: 2px solid #ffc107;
     padding-bottom: 3px;
+}
+
+.artist-img {
+height: 130px;
+width: 130px;
 }

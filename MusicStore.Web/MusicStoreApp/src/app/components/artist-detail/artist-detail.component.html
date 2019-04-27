@@ -1,0 +1,17 @@
+
+  <div class="col-md-12 py-2">
+      <div class="card mb-0">
+        <img class="card-img py-5" [src]="artistPhoto" alt="Artist Image">
+        <div class="card-body py-1 my-2">
+            <h5 class="card-title text-center">{{ artistModel?.Name }}</h5>
+            <div class="col-md-6">
+                <ul class="list-inline">
+                  <li *ngFor="let album of artistModel.Album" class="list-inline-item">
+                    <small class="album-title mx-2"><a href="javascript:void(0)">{{ album.Title }}</a></small>
+                  </li>
+                </ul>
+            </div>
+        </div>
+      </div>
+  </div>
+

@@ -1,8 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ChangeDetectorRef } from '@angular/core';
 import { ArtistService } from 'src/app/services/artist.service';
 
 import { Observable } from 'rxjs';
 import { debounceTime, distinctUntilChanged, map, switchMap } from 'rxjs/operators';
+import { ArtistModel } from 'src/app/models/artist.model';
+import { ArtistDetailComponent } from '../artist-detail/artist-detail.component';
 @Component({
   selector: 'app-artists',
   templateUrl: './artists.component.html',
@@ -14,7 +16,12 @@ export class ArtistsComponent implements OnInit {
   page = 1;
   pageSize = 10;
   searchInput: string = '';
-  constructor(private artistService: ArtistService) { }
+  fieldFilter: string = 'Name';
+
+  selectedArtist: ArtistModel;
+  @ViewChild('artistDetail') artistDetail: ArtistDetailComponent;
+
+  constructor(private artistService: ArtistService, private changeDetect: ChangeDetectorRef) { }
 
   ngOnInit() {
     this.getArtists();
@@ -27,7 +34,9 @@ export class ArtistsComponent implements OnInit {
   }
 
   selectArtist(artist){
-
+    this.selectedArtist = artist;
+    this.changeDetect.detectChanges();
+    this.artistDetail.getArtist(artist.ArtistId);
   }
 
   prev(){
@@ -45,6 +54,18 @@ export class ArtistsComponent implements OnInit {
   next(){
     this.pageSize += 10;
     this.artistService.getArtistsNext(this.pageSize).subscribe((res : any[]) => {
+      this.artists = res;
+    });
+  }
+
+  asc(){
+    this.artistService.sort(this.fieldFilter, true).subscribe((res : any[]) => {
+      this.artists = res;
+    });
+  }
+
+  desc(){
+    this.artistService.sort(this.fieldFilter, false).subscribe((res : any[]) => {
       this.artists = res;
     });
   }

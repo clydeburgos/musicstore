@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Mvc;
 using MusicStore.Data.Models;
 using MusicStore.Models;
 using MusicStore.Service;
+using Newtonsoft.Json.Linq;
 
 namespace MusicStore.API.Controllers
 {
@@ -30,6 +31,16 @@ namespace MusicStore.API.Controllers
             var data = await this.artistService.GetAll();
             var dataModel = this.mapper.Map<IEnumerable<Artist>, IEnumerable<ArtistModel>>(data);
             return Ok(dataModel);
+        }
+
+        [Route("api/artists/photo")]
+        [HttpGet]
+        public async Task<IActionResult> GetImage(string keyword)
+        {
+            var data = await this.artistService.GetArtistPhoto(keyword);
+            dynamic image = new JObject();
+            image.Url = data;
+            return Ok(image);
         }
     }
 }

@@ -5,6 +5,9 @@ body {
 
 body {
   padding-top: 56px;
+  /* color: #e9ecef!important; */
+  text-align: left;
+  background-color: #1a1a1a!important;
 }
 
 @media (max-width: 991.98px) {
@@ -83,4 +86,8 @@ body {
     padding: 2px 5px 2px 5px!important;
     margin: 2px 5px 2px 5px!important;
     vertical-align: middle!important;
+}
+
+.header-title {
+  color: #e9ecef!important;
 }

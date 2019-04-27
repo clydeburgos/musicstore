@@ -9,12 +9,14 @@ import { HeaderComponent } from './layout/header/header.component';
 import { ArtistsComponent } from './components/artists/artists.component';
 import { ArtistService } from './services/artist.service';
 
-import { HttpClientModule } from '@angular/common/http'; 
+import { HttpClientModule } from '@angular/common/http';
+import { ArtistDetailComponent } from './components/artist-detail/artist-detail.component'; 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
-    ArtistsComponent
+    ArtistsComponent,
+    ArtistDetailComponent
   ],
   imports: [
     HttpClientModule,
