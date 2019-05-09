@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Autofac;
 using AutoMapper;
+using Microsoft.AspNet.OData.Builder;
 using Microsoft.AspNet.OData.Extensions;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -14,6 +15,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
+using Microsoft.OData.Edm;
 using MusicStore.API.Automapper;
 using MusicStore.Data.Models;
 using MusicStore.Service;
@@ -62,13 +64,21 @@ namespace MusicStore.API
 
        
         }
-
+        private static IEdmModel GetEdmModel(IServiceProvider serviceProvider)
+        {
+            ODataConventionModelBuilder builder = new ODataConventionModelBuilder(serviceProvider);
+            builder.EntitySet<Artist>("Artists");
+            builder.EntitySet<Track>("Tracks");
+            builder.EntitySet<Customer>("Customers");
+            return builder.GetEdmModel();
+        }
         public void ConfigureContainer(ContainerBuilder builder)
         {
             builder.RegisterType<BingImageSearchService>();
             builder.RegisterType<ArtistService>().As<IArtistService>();
             builder.RegisterType<TrackService>().As<ITrackService>();
             builder.RegisterType<AlbumService>().As<IAlbumService>();
+            builder.RegisterType<CustomerService>().As<ICustomerService>();
         }
         
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -88,6 +98,7 @@ namespace MusicStore.API
             app.UseMvc(routerBuilder => {
                 routerBuilder.EnableDependencyInjection();
                 routerBuilder.Expand().Filter().Select().OrderBy().MaxTop(null).Count();
+                routerBuilder.MapODataServiceRoute("odata", "odata", GetEdmModel(app.ApplicationServices));
             });
         }
     }

@@ -1,16 +1,13 @@
 ﻿using MusicStore.Data.Models;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace MusicStore.Service
 {
-    public interface ITrackService
+    public interface ICustomerService
     {
-        Task<IEnumerable<Track>> GetAll();
-        Task Save(Track track);
-        Task Delete(int id);
+        Task<IEnumerable<Customer>> GetAll();
     }
 }

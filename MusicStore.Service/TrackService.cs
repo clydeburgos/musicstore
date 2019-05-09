@@ -20,6 +20,7 @@ namespace MusicStore.Service
                 .Include(t => t.Genre)
                 .Include(t => t.Album)
                 .OrderBy(t => t.Name)
+                .Take(100)
                 .ToListAsync();
         }
 

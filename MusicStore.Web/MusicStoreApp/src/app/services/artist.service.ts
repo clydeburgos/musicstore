@@ -20,10 +20,6 @@ export class ArtistService {
     return this.http.get(`${this.baseAPIUrl}?$filter=ArtistId eq ${id}`);
   }
 
-  getImage(keyword: string){
-    return this.http.get(`${this.baseAPIUrl}/photo?keyword=${keyword}`);
-  }
-
   getArtistsNext(skipNum: number){
     return this.http.get(`${this.baseAPIUrl}?$top=10&$orderby=Name&$skip=${skipNum}`);
   }
@@ -41,6 +37,10 @@ export class ArtistService {
   }
 
   getArtistNames(term: string){
-    return this.http.get(`${this.baseAPIUrl}?$top=10&$orderby=Name&$select=Name&$filter=contains(Name, '${term}')`);
+    return this.http.get(`${this.baseAPIUrl}?$top=10&$orderby=Name&$select=ArtistId,Name&$filter=contains(Name, '${term}')`);
+  }
+
+  getImage(keyword: string){
+    return this.http.get(`${this.baseAPIUrl}/photo?keyword=${keyword}`);
   }
 }
